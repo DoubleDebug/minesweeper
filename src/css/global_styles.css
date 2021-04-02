@@ -1,0 +1,5 @@
+:root {
+    --blockColor: white;
+    --blockColorHover: rgb(231, 231, 231);
+    --blockColorActive: rgb(206, 206, 206);
+}
