@@ -2,9 +2,9 @@ import { BlockModel } from "./model.js";
 import { BlockView } from "./view.js";
 
 export class Block {
-    constructor(parent, hasMine)
+    constructor(parent, posX, posY)
     {
-        this.model = new BlockModel(hasMine);
+        this.model = new BlockModel(posX, posY);
         this.view = new BlockView(parent, this.model);
     }
 
@@ -17,5 +17,10 @@ export class Block {
     draw()
     {
         this.view.draw();
+    }
+
+    placeMine()
+    {
+        this.model.placeMine();
     }
 }

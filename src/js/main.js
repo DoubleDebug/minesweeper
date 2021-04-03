@@ -1,6 +1,28 @@
-import { Block } from "./block/controller.js"
+import { Table } from "./table/controller.js"
+const config = "../../config/config.json";
 
-console.log("Hello world!")
+export const Settings = async () => {
+    return await fetch(config)
+    .then(response => response.json());
+}
 
-const b = new Block(document.body, true);
-b.draw();
+export const GameController = async () => {
+
+    const settings = await Settings();
+    const table = new Table(document.body, settings.width, settings.height);
+    const initialize = async () =>
+    {
+        table.draw();
+    };
+
+    const startGame = (startingBlockPos) =>
+    {
+        table.startGame(startingBlockPos);
+    }
+
+    return {
+        initialize: initialize,
+        startGame: startGame }
+};
+
+(await GameController()).initialize();

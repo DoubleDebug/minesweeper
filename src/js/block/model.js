@@ -1,8 +1,14 @@
 export class BlockModel {
-    constructor (hasMine)
+    constructor (posX, posY)
     {
-        this.hasMine = hasMine;
         this.opened = false;
+        this.x = posX;
+        this.y = posY;
+    }
+
+    placeMine()
+    {
+        this.hasMine = true;
     }
 
     open()

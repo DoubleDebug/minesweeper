@@ -1,22 +1,32 @@
+import { GameController } from "../main.js";
+
 export class BlockView {
-    constructor(parent, block)
+    constructor(parent, model)
     {
         this.parent = parent;
         this.container = null;
-        this.block = block;
+        this.model = model;
     }
 
     draw()
     {
         this.container = document.createElement('div');
         this.container.className = 'block';
-        this.container.onclick = open;
+        this.container.onclick = () => { this.open(); };
         this.parent.appendChild(this.container);
     }
 
-    open()
+    async open()
     {
-        if (block.hasMine)
+        if (this.model.hasMine === undefined)
+        {
+            (await GameController()).startGame({
+                "posX": this.model.x,
+                "posY": this.model.y
+            });
+        }
+
+        if (this.model.hasMine)
             this.container.innerHTML = '💣';
     }
 }
