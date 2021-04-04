@@ -6,23 +6,12 @@ export const Settings = async () => {
     .then(response => response.json());
 }
 
-export const GameController = async () => {
+// implement game controller (singleton class)
 
-    const settings = await Settings();
-    const table = new Table(document.body, settings.width, settings.height);
-    const initialize = async () =>
-    {
-        table.draw();
-    };
+export const StartGame = (startingBlockPos) => {
+    table.startGame(startingBlockPos);
+}
 
-    const startGame = (startingBlockPos) =>
-    {
-        table.startGame(startingBlockPos);
-    }
-
-    return {
-        initialize: initialize,
-        startGame: startGame }
-};
-
-(await GameController()).initialize();
+const settings = await Settings();
+const table = new Table(document.body, settings.width, settings.height);
+table.draw();

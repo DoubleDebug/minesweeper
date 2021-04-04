@@ -1,4 +1,4 @@
-import { GameController } from "../main.js";
+import { StartGame } from "../main.js";
 
 export class BlockView {
     constructor(parent, model)
@@ -15,14 +15,14 @@ export class BlockView {
         this.container.onclick = () => { this.open(); };
         this.parent.appendChild(this.container);
     }
-
-    async open()
+    
+    open()
     {
-        if (this.model.hasMine === undefined)
+        if (this.model.hasMine == undefined)
         {
-            (await GameController()).startGame({
-                "posX": this.model.x,
-                "posY": this.model.y
+            StartGame({
+                "x": this.model.x,
+                "y": this.model.y
             });
         }
 

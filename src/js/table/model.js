@@ -10,7 +10,7 @@ export class TableModel {
 
     placeMines(startingBlockPos, numOfMines)
     {
-        this.blocks.map(row => row.map(block => block.hasMine = false ));
+        this.blocks.map(row => row.map(block => block.model.hasMine = false ));
     
         let minesPlaced = 0;
         while (minesPlaced < numOfMines)
@@ -18,13 +18,13 @@ export class TableModel {
             const w = Math.floor(Math.random() * this.width);
             const h = Math.floor(Math.random() * this.height);
 
-            if (w !== startingBlockPos.x && h !== startingBlockPos.y && !this.blocks[w][h].hasMine)
+            if (w != startingBlockPos.x && h != startingBlockPos.y && !this.blocks[w][h].model.hasMine)
             {
-                this.blocks[w][h].placeMine();
+                this.blocks[w][h].model.placeMine();
                 minesPlaced++;
             }
         }
 
-        console.log(this.blocks);
+        this.blocks.map(r => r.map(b => console.log(`${b.model.x} ${b.model.y} ${b.model.hasMine}`)));
     }
 }

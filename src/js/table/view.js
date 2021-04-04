@@ -9,12 +9,13 @@ export class TableView {
     draw()
     {
         this.container.className = 'table';
-        this.container.onclick = () => { this.model.placeMines() }
 
         this.container.style.gridTemplateRows = `repeat(${this.model.width}, auto)`;
         this.container.style.gridTemplateColumns = `repeat(${this.model.height}, auto)`;
 
         this.parent.appendChild(this.container);
+
+        // draw each block
         this.model.blocks.map(row => row.map(block => {
             block.draw();
         }));
