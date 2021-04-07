@@ -4,7 +4,7 @@ ________________________________________________________________________________
 
 ![Game preview](./previews/gamePreview.png)
 
-GAME RULES:
+<b>GAME RULES:</b>
 * Click on a block to open it.
     * The first block you click will NEVER be a mine.
 * The block can either:
@@ -21,7 +21,7 @@ ________________________________________________________________________________
 
 ![Game settings preview](./previews/gameSettings.png)
 
-GAME SETTINGS:
+<b>GAME SETTINGS:</b>
 The game is designed dynamically and allows changing certain game parameters.
 The configuration is stored in a fake JSON database (file ./config/config.json)
 and can be changed either manually or using the game's interface.
@@ -36,7 +36,7 @@ ________________________________________________________________________________
 
 ![Game design diagram](./previews/gameDesign.png)
 
-GAME DESIGN:
+<b>GAME DESIGN:</b>
 The game follows the MVC (model-view-controller) structure model.
 Every component has a:
 * model
@@ -58,7 +58,7 @@ Technical information:
 
 _______________________________________________________________________________________________________________
 
-NOTES:
+<b>NOTES:</b>
   * For a simple project like this, perhaps there's no need for a complex structure like MVC,
 but this was a practice project and the goal was to build a scalable/expandable game.
   * Generally in the MVC model, the view isn't supposed to have direct contact with the model.
