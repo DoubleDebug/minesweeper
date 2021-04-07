@@ -19,7 +19,7 @@ GAME RULES:
 7. When you open all blocks without mines, YOU WIN.
 _______________________________________________________________________________________________________________
 
-![Game settings preview](./previews/settingsPreview.png)
+![Game settings preview](./previews/gameSettings.png)
 
 GAME SETTINGS:
 The game is designed dynamically and allows changing certain game parameters.
