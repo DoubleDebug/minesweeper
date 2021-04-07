@@ -19,8 +19,6 @@ ________________________________________________________________________________
 * When you open all blocks without mines, YOU WIN.
 _______________________________________________________________________________________________________________
 
-![Game settings preview](./previews/gameSettings.png)
-
 <b>GAME SETTINGS:</b>
 The game is designed dynamically and allows changing certain game parameters.
 The configuration is stored in a fake JSON database (file ./config/config.json)
@@ -32,9 +30,9 @@ and can be changed either manually or using the game's interface.
     * number of blocks vertically
 * Number of mines
     * number of mines within the board determines the difficulty of solving the game
+    
+![Game settings preview](./previews/gameSettings.png)
 _______________________________________________________________________________________________________________
-
-![Game design diagram](./previews/gameDesign.png)
 
 <b>GAME DESIGN:</b>
 The game follows the MVC (model-view-controller) structure model.
@@ -55,7 +53,8 @@ Technical information:
   * written is plain/vanilla HTML/CSS/JavaScript
   * uses a fake JSON database to read game settings
   * no 3rd party frameworks
-
+  
+![Game design diagram](./previews/gameDesign.png)
 _______________________________________________________________________________________________________________
 
 <b>NOTES:</b>
