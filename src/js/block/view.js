@@ -24,7 +24,6 @@ export class BlockView {
             // checking if the game has started
             if (!controller.gameStarted)
             {
-                console.log('game started');
                 controller.startGame({
                     "x": this.model.x,
                     "y": this.model.y

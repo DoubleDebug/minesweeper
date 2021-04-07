@@ -10,24 +10,53 @@ export class TableModel {
 
     placeMines(startingBlockPos, numOfMines)
     {
-        this.blocks.map(row => row.map(block => block.model.hasMine = false));
-    
+        // removing mines from board
+        this.blocks.map(row => row.map(block => block.model.hasMine = false));    
+        
+        // finding blocks that shouldn't have mines
+        // (starting block + his surrounding blocks)
+        const forbiddenBlocks = [];
+        for (let a = -1; a < 2; a++)
+        {
+            for (let b = -1; b < 2; b++)
+            {
+                if (this.outOfBounds(startingBlockPos.y + b, startingBlockPos.x + a))
+                    continue;
+
+                forbiddenBlocks.push([startingBlockPos.x + a, startingBlockPos.y + b]);
+            }
+        }
+
         let minesPlaced = 0;
         while (minesPlaced < numOfMines)
         {
-            const w = Math.floor(Math.random() * this.width);
-            const h = Math.floor(Math.random() * this.height);
+            // calculating random position to place mine
+            const x = Math.floor(Math.random() * this.width);
+            const y = Math.floor(Math.random() * this.height);
 
-            if (w != startingBlockPos.x && h != startingBlockPos.y && !this.blocks[h][w].model.hasMine)
+            // checking if the chosen block already has a mine
+            if (this.blocks[y][x].model.hasMine)
+                continue;
+
+            // checking if the chosen block is forbidden
+            let contains = false;
+            for (let i=0; i<forbiddenBlocks.length; i++)
             {
-                this.blocks[h][w].model.placeMine();
-                minesPlaced++;
+                if (forbiddenBlocks[i][0] == x && forbiddenBlocks[i][1] == y)
+                {
+                    contains = true;
+                    break;
+                }
             }
+            if (contains) continue;
+
+            // placing the mine
+            this.blocks[y][x].model.placeMine();
+            minesPlaced++;
         }
 
         //print table in console
         //this.blocks.map(row => row.map(block => console.log(`${block.model.x} ${block.model.y} ${block.model.hasMine}`)));
-        //this.blocks.map(row => row.map(block => console.table(block)));
     }
 
     countSurroundingMines(posX, posY)
