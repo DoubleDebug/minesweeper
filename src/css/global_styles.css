@@ -2,4 +2,6 @@
     --blockColor: white;
     --blockColorHover: rgb(231, 231, 231);
     --blockColorActive: rgb(206, 206, 206);
+    --blockOpenedGreen: rgb(204, 255, 204);
+    --blockOpenedRed: rgb(255, 182, 182);
 }

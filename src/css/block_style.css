@@ -5,6 +5,7 @@
     background: var(--blockColor);
     display: grid;
     place-items: center;
+    margin: 1px 1px 1px 1px;
 }
 
 .block:hover {
@@ -14,4 +15,12 @@
 
 .block:active {
     background: var(--blockColorActive);
+}
+
+.openedGreen {
+    background: var(--blockOpenedGreen);
+}
+
+.openedRed {
+    background: var(--blockOpenedRed);
 }

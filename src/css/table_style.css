@@ -1,5 +1,6 @@
 .table {
     border: 1px solid black;
     display: grid;
-    width: 0;
+    width: fit-content;
+    height: fit-content;
 }

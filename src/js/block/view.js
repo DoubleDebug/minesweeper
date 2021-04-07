@@ -1,4 +1,4 @@
-import { StartGame } from "../main.js";
+import { GameController } from "../main.js";
 
 export class BlockView {
     constructor(parent, model)
@@ -12,21 +12,45 @@ export class BlockView {
     {
         this.container = document.createElement('div');
         this.container.className = 'block';
-        this.container.onclick = () => { this.open(); };
+        this.container.onclick = () => { this.open(true); };
         this.parent.appendChild(this.container);
     }
     
-    open()
+    open(causedByPlayer)
     {
-        if (this.model.hasMine == undefined)
-        {
-            StartGame({
-                "x": this.model.x,
-                "y": this.model.y
-            });
-        }
+        GameController.then((gc) => {
+            const controller = gc.getInstance();
 
-        if (this.model.hasMine)
-            this.container.innerHTML = '💣';
+            // checking if the game has started
+            if (!controller.gameStarted)
+            {
+                console.log('game started');
+                controller.startGame({
+                    "x": this.model.x,
+                    "y": this.model.y
+                });
+            }
+
+            // checking if the block has a mine
+            if (this.model.hasMine)
+            {
+                this.container.innerHTML = '💣';
+                this.container.classList.add('openedRed');      // change block color
+                if (causedByPlayer === true)
+                {
+                    controller.gameOver();
+                }
+            }
+            else
+            {
+                this.container.classList.add('openedGreen');    // change block color
+                const numOfMines = controller.countSurroundingMines(this.model.x, this.model.y);
+
+                if (numOfMines != 0)
+                {
+                    this.container.innerHTML = numOfMines;
+                }
+            }
+        });        
     }
 }

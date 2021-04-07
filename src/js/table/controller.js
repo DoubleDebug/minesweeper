@@ -1,7 +1,6 @@
 import { TableModel } from "./model.js";
 import { TableView } from "./view.js";
 import { Block } from "../block/controller.js";
-import { Settings } from "../main.js";
 
 
 export class Table {
@@ -19,7 +18,7 @@ export class Table {
         for (let i=0; i<width; i++)
         {
             for (let j=0; j<height; j++)
-                this.model.blocks[i][j] = new Block(this.view.container, i, j);
+                this.model.blocks[j][i] = new Block(this.view.container, i, j);
         }
     }
 
@@ -28,9 +27,35 @@ export class Table {
         this.view.draw();
     }
 
-    async startGame(startingBlockPos)
+    startGame(startingBlockPos, numOfMines)
     {
-        const config = await Settings();
-        this.model.placeMines(startingBlockPos, config.numOfMines);
+        this.model.placeMines(startingBlockPos, numOfMines);
+    }
+
+    openAll()
+    {
+        this.model.blocks.map(row => row.map(block => block.open()));
+    }
+
+    countSurroundingMines(posX, posY)
+    {
+        const numOfMines = this.model.countSurroundingMines(posX, posY);
+        if (numOfMines == 0)
+        {
+            this.openSurroundingMines(posX, posY);
+        }
+        return numOfMines;
+    }
+
+    openSurroundingMines(posX, posY)
+    {
+        for (let a = -1; a < 2; a++)
+        {
+            for (let b = -1; b < 2; b++)
+            {
+                if (!this.model.outOfBounds(posX + a, posY + b) && !this.model.blocks[posY + b][posX + a].model.opened)
+                    this.model.blocks[posY + b][posX + a].open();
+            }
+        }
     }
 }
