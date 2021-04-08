@@ -11,18 +11,25 @@ export class BlockView {
     draw()
     {
         this.container = document.createElement('div');
-        this.container.className = 'block';
-        this.container.onclick = () => { this.open(true); };
+        Object.assign(this.container, {
+            className: 'block',
+            onclick: () => {
+                GameController.then((gc) => gc.getInstance().openBlock(this.model.x, this.model.y))
+            },
+            oncontextmenu: (ev) => {
+                ev.preventDefault();
+                GameController.then((gc) => gc.getInstance().markBlock(this.model.x, this.model.y));
+        }});
         this.parent.appendChild(this.container);
     }
     
-    open(causedByPlayer)
+    open()
     {
         GameController.then((gc) => {
             const controller = gc.getInstance();
 
             // checking if the game has started
-            if (!controller.gameStarted)
+            if (controller.gameState == 'none')
             {
                 controller.startGame({
                     "x": this.model.x,
@@ -35,10 +42,9 @@ export class BlockView {
             {
                 this.container.innerHTML = '💣';
                 this.container.classList.add('openedRed');      // change block color
-                if (causedByPlayer === true)
-                {
-                    controller.gameOver();
-                }
+                
+                // game over
+                controller.openAllBlocks();
             }
             else
             {
@@ -50,6 +56,20 @@ export class BlockView {
                     this.container.innerHTML = numOfMines;
                 }
             }
+
+            // checking if the game is over
+            if (controller.isTheGameOver() && controller.gameState != 'over')
+                controller.gameOver();
         });        
+    }
+
+    mark()
+    {
+        if (this.model.opened) return;
+
+        if (this.model.marked)
+            this.container.innerHTML = '';
+        else
+            this.container.innerHTML = '🚩';
     }
 }

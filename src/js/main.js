@@ -1,35 +1,64 @@
-import { Table } from "./table/controller.js"
-const configURL = "../../config/config.json";
+import { Table } from "./table/controller.js";
+import { Fireworks } from "fireworks-js";
+import 'animate.css';
+const configURL = "../../config/options.json";
+
+// TO DO: separate the game controller into MVC componenets
 
 // singleton game controller
 export const GameController = (async () => {
     let instance;
-    let gameStarted = false;
     let table;
+    let gameState = 'none';
+    let fireworks;
     const gameConfig = await settings();
 
     function createInstance()
     {
         return {
-            initializeGame: initializeGame,
-            startGame: startGame,
             settings: gameConfig,
-            gameOver: gameOver,
-            countSurroundingMines: countSurroundingMines,
-            gameStarted: gameStarted
+            gameState: gameState,
+            initializeGame: function initializeGame()
+            {
+                prepareFireworks();
+                table = new Table(document.querySelector('.gameContainer'), this.settings.width, this.settings.height);
+                table.draw();
+            },
+            startGame: function startGame(startingBlockPos)
+            {
+                table.startGame(startingBlockPos, this.settings.numOfMines);
+                this.gameState = 'started';
+            },
+            openBlock: function openBlock(posX, posY)
+            {
+                table.openBlock(posX, posY);
+            },
+            openAllBlocks: function openAllBlocks()
+            {
+                table.openAll();
+            },
+            countSurroundingMines: function countSurroundingMines(posX, posY)
+            {
+                return table.countSurroundingMines(posX, posY);
+            },
+            markBlock: function markBlock(posX, posY)
+            {
+                table.markBlock(posX, posY);
+            },
+            isTheGameOver: function isTheGameOver()
+            {
+                return table.isTheGameOver(gameConfig.numOfMines);
+            },
+            gameOver: function gameOver() {
+                this.gameState = 'over';
+
+                fireworks.start();
+                const label = document.createElement('h1');
+                label.innerHTML = 'You win!';
+                label.className = 'animate__animated animate__bounce label youWin';
+                document.querySelector('.table').appendChild(label);
+            }
         };
-    }
-
-    function initializeGame()
-    {
-        table = new Table(document.body, this.settings.width, this.settings.height);
-        table.draw();
-    }
-
-    function startGame(startingBlockPos)
-    {
-        table.startGame(startingBlockPos, this.settings.numOfMines);
-        this.gameStarted = true;
     }
 
     async function settings()
@@ -38,15 +67,31 @@ export const GameController = (async () => {
         .then(response => response.json());
     }
 
-    function gameOver()
+    function prepareFireworks()
     {
-        table.openAll();
-        alert('You stepped on a mine. Game over!');
-    }
-
-    function countSurroundingMines(posX, posY)
-    {
-        return table.countSurroundingMines(posX, posY);
+        const cont = document.querySelector('.gameContainer');
+        fireworks = new Fireworks({
+            target: cont,
+            hue: 120,
+            startDelay: 1,
+            minDelay: 20,
+            maxDelay: 30,
+            speed: 5,
+            acceleration: 1.15,
+            friction: 0.88,
+            gravity: 1,
+            particles: 65,
+            trace: 3,
+            explosion: 6,
+            boundaries: {
+              top: 70,
+              bottom: cont.clientHeight,
+              left: 70,
+              right: cont.clientWidth
+            },
+            sound: {
+              enable: false }
+        });
     }
 
     return {
@@ -58,4 +103,4 @@ export const GameController = (async () => {
     };
 })();
 
-(await GameController).getInstance().initializeGame();
+GameController.then((gc) => gc.getInstance().initializeGame());

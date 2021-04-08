@@ -5,3 +5,15 @@
     --blockOpenedGreen: rgb(204, 255, 204);
     --blockOpenedRed: rgb(255, 182, 182);
 }
+
+html, body {
+    height: 100%;
+}
+
+.gameContainer {
+    height: 100%;
+    position: relative;
+    z-index: 0;
+    display: grid;
+    place-items: center;
+}

@@ -20,7 +20,7 @@ export class TableModel {
         {
             for (let b = -1; b < 2; b++)
             {
-                if (this.outOfBounds(startingBlockPos.y + b, startingBlockPos.x + a))
+                if (this.outOfBounds(startingBlockPos.x + a, startingBlockPos.y + b))
                     continue;
 
                 forbiddenBlocks.push([startingBlockPos.x + a, startingBlockPos.y + b]);
@@ -35,7 +35,7 @@ export class TableModel {
             const y = Math.floor(Math.random() * this.height);
 
             // checking if the chosen block already has a mine
-            if (this.blocks[y][x].model.hasMine)
+            if (this.blocks[x][y].model.hasMine)
                 continue;
 
             // checking if the chosen block is forbidden
@@ -51,7 +51,7 @@ export class TableModel {
             if (contains) continue;
 
             // placing the mine
-            this.blocks[y][x].model.placeMine();
+            this.blocks[x][y].model.placeMine();
             minesPlaced++;
         }
 
@@ -72,7 +72,7 @@ export class TableModel {
                 if (this.outOfBounds(posY + b, posX + a))
                     continue;
 
-                if (this.blocks[posY + b][posX + a].model.hasMine)
+                if (this.blocks[posX + a][posY + b].model.hasMine)
                     mines++;
             }
         }
@@ -87,4 +87,16 @@ export class TableModel {
 
         return false;
     }    
+
+    isTheGameOver(numOfMines)
+    {
+        const numOfOpenedBlocks = this.blocks.reduce((acc, curr) => {
+            return acc += curr.filter(block => block.model.opened).length;
+        }, 0);
+        
+        if (numOfOpenedBlocks == (this.width * this.height - numOfMines))
+            return true;
+            
+        return false;
+    }
 }

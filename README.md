@@ -1,6 +1,5 @@
 # minesweeper
  Simple MineSweeper game using vanilla JavaScript
-_______________________________________________________________________________________________________________
 
 ![Game preview](./previews/gamePreview.png)
 
@@ -19,7 +18,7 @@ ________________________________________________________________________________
 * When you open all blocks without mines, YOU WIN.
 _______________________________________________________________________________________________________________
 
-<b>GAME SETTINGS:</b>
+<b>GAME SETTINGS:</b></br>
 The game is designed dynamically and allows changing certain game parameters.
 The configuration is stored in a fake JSON database (file ./config/config.json)
 and can be changed either manually or using the game's interface.
@@ -34,7 +33,7 @@ and can be changed either manually or using the game's interface.
 ![Game settings preview](./previews/gameSettings.png)
 _______________________________________________________________________________________________________________
 
-<b>GAME DESIGN:</b>
+<b>GAME DESIGN:</b></br>
 The game follows the MVC (model-view-controller) structure model.
 Every component has a:
 * model
