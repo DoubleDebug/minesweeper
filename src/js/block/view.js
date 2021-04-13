@@ -1,4 +1,4 @@
-import { GameController } from "../main.js";
+import { GameController } from "../game/controller.js";
 
 export class BlockView {
     constructor(parent, model)
@@ -14,26 +14,24 @@ export class BlockView {
         Object.assign(this.container, {
             className: 'block',
             onclick: () => {
-                GameController.then((gc) => gc.getInstance().openBlock(this.model.x, this.model.y))
+                GameController.getInstance().then((c) => c.openBlock(this.model.x, this.model.y, true));
             },
             oncontextmenu: (ev) => {
                 ev.preventDefault();
-                GameController.then((gc) => gc.getInstance().markBlock(this.model.x, this.model.y));
+                GameController.getInstance().then((c) => c.markBlock(this.model.x, this.model.y));
         }});
         this.parent.appendChild(this.container);
     }
     
-    open()
+    open(openedByPlayer)
     {
-        GameController.then((gc) => {
-            const controller = gc.getInstance();
-
+        GameController.getInstance().then((controller) => {
             // checking if the game has started
-            if (controller.gameState == 'none')
+            if (controller.gameState() == 'none')
             {
                 controller.startGame({
-                    "x": this.model.x,
-                    "y": this.model.y
+                    x: this.model.x,
+                    y: this.model.y
                 });
             }
 
@@ -43,6 +41,13 @@ export class BlockView {
                 this.container.innerHTML = '💣';
                 this.container.classList.add('openedRed');      // change block color
                 
+                // blinking animation on the opened mine
+                if (openedByPlayer)
+                {
+                    this.container.classList.remove('openedRed');
+                    this.container.classList.add('openedMine');
+                }
+
                 // game over
                 controller.openAllBlocks();
             }
@@ -58,9 +63,9 @@ export class BlockView {
             }
 
             // checking if the game is over
-            if (controller.isTheGameOver() && controller.gameState != 'over')
+            if (controller.isTheGameOver() && controller.gameState() != 'over')
                 controller.gameOver();
-        });        
+        });
     }
 
     mark()

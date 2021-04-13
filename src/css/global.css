@@ -1,13 +1,21 @@
+@import url('https://fonts.googleapis.com/css2?family=Sriracha&display=swap');
+
 :root {
     --blockColor: white;
-    --blockColorHover: rgb(231, 231, 231);
-    --blockColorActive: rgb(206, 206, 206);
+    --blockColorHover: rgb(223, 223, 223);
+    --blockColorActive: rgb(190, 190, 190);
     --blockOpenedGreen: rgb(204, 255, 204);
     --blockOpenedRed: rgb(255, 182, 182);
+    --blockOpenedMine: rgb(255, 100, 100);
+    --blockBorderColor: rgb(41, 41, 41);
+    --pageBackgroundColor: rgb(37, 37, 38);
+    --labelColor: white;
+    --labelFontFamily: 'Sriracha';
 }
 
 html, body {
     height: 100%;
+    margin: 0;
 }
 
 .gameContainer {
@@ -16,4 +24,5 @@ html, body {
     z-index: 0;
     display: grid;
     place-items: center;
+    background: var(--pageBackgroundColor);
 }

@@ -18,7 +18,7 @@ export class Table {
         for (let i=0; i<height; i++)
         {
             for (let j=0; j<width; j++)
-                this.model.blocks[i][j] = new Block(this.view.container, i, j);
+                this.model.blocks[i][j] = new Block(this.view.container, j, i);
         }
     }
 
@@ -32,9 +32,9 @@ export class Table {
         this.model.placeMines(startingBlockPos, numOfMines);
     }
 
-    openBlock(posX, posY)
+    openBlock(posX, posY, openedByPlayer)
     {
-        this.model.blocks[posX][posY].open();
+        this.model.blocks[posY][posX].open(openedByPlayer);
     }
 
     openAll()
@@ -58,15 +58,15 @@ export class Table {
         {
             for (let b = -1; b < 2; b++)
             {
-                if (!this.model.outOfBounds(posX + a, posY + b) && !this.model.blocks[posX + a][posY + b].model.opened)
-                    this.model.blocks[posX + a][posY + b].open();
+                if (!this.model.outOfBounds(posX + a, posY + b) && !this.model.blocks[posY + b][posX + a].model.opened)
+                    this.model.blocks[posY + b][posX + a].open();
             }
         }
     }
 
     markBlock(posX, posY)
     {
-        this.model.blocks[posX][posY].mark();
+        this.model.blocks[posY][posX].mark();
     }
 
     isTheGameOver(numOfMines)

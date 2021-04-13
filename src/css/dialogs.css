@@ -1,10 +1,12 @@
 .label {
     position: absolute;
+    color: var(--labelColor);
 }
 
 .youWin {
+    font-family: var(--labelFontFamily);
     font-size: 50px;
-    top: -120px;
+    top: -130px;
     width: 100%;
     text-align: center;
 }

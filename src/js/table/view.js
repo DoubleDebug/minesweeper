@@ -10,8 +10,8 @@ export class TableView {
     {
         this.container.className = 'table';
 
-        this.container.style.gridTemplateRows = `repeat(${this.model.width}, auto)`;
-        this.container.style.gridTemplateColumns = `repeat(${this.model.height}, auto)`;
+        this.container.style.gridTemplateRows = `repeat(${this.model.height}, auto)`;
+        this.container.style.gridTemplateColumns = `repeat(${this.model.width}, auto)`;
 
         this.parent.appendChild(this.container);
 

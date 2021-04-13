@@ -7,11 +7,11 @@ export class Block {
         this.view = new BlockView(parent, this.model);
     }
 
-    open() {
+    open(openedByPlayer) {
         if (this.model.opened) return;
         
         this.model.open();
-        this.view.open();
+        this.view.open(openedByPlayer);
     }
 
     draw() {

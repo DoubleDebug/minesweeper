@@ -31,8 +31,8 @@ export class TableModel {
         while (minesPlaced < numOfMines)
         {
             // calculating random position to place mine
-            const x = Math.floor(Math.random() * this.width);
-            const y = Math.floor(Math.random() * this.height);
+            const x = Math.floor(Math.random() * this.height);
+            const y = Math.floor(Math.random() * this.width);
 
             // checking if the chosen block already has a mine
             if (this.blocks[x][y].model.hasMine)
@@ -42,7 +42,7 @@ export class TableModel {
             let contains = false;
             for (let i=0; i<forbiddenBlocks.length; i++)
             {
-                if (forbiddenBlocks[i][0] == x && forbiddenBlocks[i][1] == y)
+                if (forbiddenBlocks[i][0] == y && forbiddenBlocks[i][1] == x)
                 {
                     contains = true;
                     break;
@@ -54,9 +54,6 @@ export class TableModel {
             this.blocks[x][y].model.placeMine();
             minesPlaced++;
         }
-
-        //print table in console
-        //this.blocks.map(row => row.map(block => console.log(`${block.model.x} ${block.model.y} ${block.model.hasMine}`)));
     }
 
     countSurroundingMines(posX, posY)
@@ -69,10 +66,10 @@ export class TableModel {
         {
             for (let b = -1; b < 2; b++)
             {
-                if (this.outOfBounds(posY + b, posX + a))
+                if (this.outOfBounds(posX + a, posY + b))
                     continue;
 
-                if (this.blocks[posX + a][posY + b].model.hasMine)
+                if (this.blocks[posY + b][posX + a].model.hasMine)
                     mines++;
             }
         }
