@@ -5,7 +5,7 @@ export class GameModel {
     }
 
     startGame() {
-        this.state = 'started';
+        this.state = 'ongoing';
     }
 
     gameOver() {

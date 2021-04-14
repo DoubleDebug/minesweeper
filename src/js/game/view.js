@@ -14,11 +14,19 @@ export class GameView {
         // add stopwatch & mines left
     }
 
-    gameOver() {
-        this.fireworks.start();
+    gameOver(result) {
         const label = document.createElement('h1');
-        label.innerHTML = 'You win!';
-        label.className = 'animate__animated animate__bounce label youWin';
+        if (result === 'success')
+        {
+            this.fireworks.start();
+            label.innerHTML = 'You win!';
+            label.className = 'animate__animated animate__shakeY label youWin';
+        }
+        else if (result === 'failure')
+        {
+            label.innerHTML = 'You lose!';
+            label.className = 'animate__animated animate__shakeX label youWin';
+        }
         this.container.querySelector('.table').appendChild(label);
     }
 

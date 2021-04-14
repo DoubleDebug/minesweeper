@@ -46,21 +46,34 @@ export class Table {
     {
         const numOfMines = this.model.countSurroundingMines(posX, posY);
         if (numOfMines == 0)
-        {
-            this.openSurroundingMines(posX, posY);
-        }
+            this.openSurroundingBlocks(posX, posY);
         return numOfMines;
     }
 
-    openSurroundingMines(posX, posY)
+    openSurroundingBlocks(posX, posY)
     {
+        const blocksToOpen = new Array();
         for (let a = -1; a < 2; a++)
         {
             for (let b = -1; b < 2; b++)
             {
                 if (!this.model.outOfBounds(posX + a, posY + b) && !this.model.blocks[posY + b][posX + a].model.opened)
-                    this.model.blocks[posY + b][posX + a].open();
+                    blocksToOpen.push({
+                        x: posY + b,
+                        y: posX + a
+                    });
             }
+        }
+        this.openBlocksWithDelay(blocksToOpen);
+    }
+
+    openBlocksWithDelay(blocks)
+    {
+        const block = blocks.pop();
+        if(block !== undefined)
+        {
+            this.model.blocks[block.x][block.y].open();
+            setTimeout(() => this.openBlocksWithDelay(blocks), 50);
         }
     }
 

@@ -46,9 +46,9 @@ export const GameController = (() => {
             {
                 return table.isTheGameOver(options.numOfMines);
             },
-            gameOver: function gameOver() {
+            gameOver: function gameOver(result) {
                 model.gameOver();
-                view.gameOver();
+                view.gameOver(result);
                 table.openAll();
             }
         };

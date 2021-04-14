@@ -49,7 +49,8 @@ export class BlockView {
                 }
 
                 // game over
-                controller.openAllBlocks();
+                if (controller.gameState() != 'over')
+                    controller.gameOver('failure');
             }
             else
             {
@@ -57,14 +58,12 @@ export class BlockView {
                 const numOfMines = controller.countSurroundingMines(this.model.x, this.model.y);
 
                 if (numOfMines != 0)
-                {
                     this.container.innerHTML = numOfMines;
-                }
             }
 
             // checking if the game is over
             if (controller.isTheGameOver() && controller.gameState() != 'over')
-                controller.gameOver();
+                controller.gameOver('success');
         });
     }
 
