@@ -1,12 +1,28 @@
 .label {
-    position: absolute;
     color: var(--labelColor);
+    font-family: var(--labelFontFamily);
 }
 
 .youWin {
-    font-family: var(--labelFontFamily);
+    position: absolute;
     font-size: 50px;
     top: -130px;
     width: 100%;
     text-align: center;
+}
+
+.startMenuContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.gameTitle {
+    font-size: 100px;
+    margin: 20px;
+}
+
+.btnPlay {
+    width: 200px;
 }

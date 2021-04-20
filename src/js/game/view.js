@@ -1,5 +1,7 @@
+import 'bootstrap/dist/css/bootstrap.css';
 import 'animate.css';
 import { Fireworks } from 'fireworks-js';
+import { GameController } from "./controller.js";
 
 export class GameView {
     constructor(parent) {
@@ -27,7 +29,7 @@ export class GameView {
             label.innerHTML = 'You lose!';
             label.className = 'animate__animated animate__shakeX label youWin';
         }
-        this.container.querySelector('.table').appendChild(label);
+        this.container.querySelector('.gameGrid').appendChild(label);
     }
 
     prepareFireworks()
@@ -54,5 +56,32 @@ export class GameView {
             sound: {
               enable: false }
         });
+    }
+
+    drawStartMenu()
+    {
+        const startMenu = document.createElement('div');
+        startMenu.className = 'startMenuContainer animate__animated animate__fadeInDown';
+
+        const gameTitle = document.createElement('h1');
+        gameTitle.innerHTML = 'minesweeper';
+        gameTitle.className = 'label gameTitle'
+        startMenu.appendChild(gameTitle);
+
+        const btnStartGame = document.createElement('button');
+        btnStartGame.className = 'btn btn-light btnPlay';
+        btnStartGame.innerHTML = 'Play';
+        btnStartGame.onclick = () => { GameController.getInstance().then((gc) => {
+            
+            // remove start menu
+            this.container.removeChild(startMenu);
+
+            // start game            
+            gc.initializeGame();
+
+        })}
+        startMenu.appendChild(btnStartGame);
+
+        this.container.appendChild(startMenu);
     }
 }

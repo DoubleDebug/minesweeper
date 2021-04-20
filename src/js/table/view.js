@@ -8,7 +8,7 @@ export class TableView {
 
     draw()
     {
-        this.container.className = 'table';
+        this.container.className = 'gameGrid animate__animated animate__fadeInDown';
 
         this.container.style.gridTemplateRows = `repeat(${this.model.height}, auto)`;
         this.container.style.gridTemplateColumns = `repeat(${this.model.width}, auto)`;

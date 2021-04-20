@@ -14,6 +14,10 @@ export const GameController = (() => {
         return {
             settings: options,
             gameState: () => { return model.state },
+            displayStartMenu: function displayStartMenu()
+            {
+                view.drawStartMenu();
+            },
             initializeGame: function initializeGame()
             {
                 table = new Table(view.container, options.width, options.height);

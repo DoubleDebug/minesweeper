@@ -9,7 +9,7 @@
     --blockOpenedRed: rgb(255, 182, 182);
     --blockOpenedMine: rgb(255, 100, 100);
     --blockBorderColor: rgb(41, 41, 41);
-    --pageBackgroundColor: rgb(37, 37, 38);
+    --pageBackgroundColor: rgb(100,100,102);
     --labelColor: white;
     --labelFontFamily: 'Sriracha';
     --labelBlock: 'Arima Madurai';
@@ -27,4 +27,5 @@ html, body {
     display: grid;
     place-items: center;
     background: var(--pageBackgroundColor);
+    background: linear-gradient(0deg, rgba(100,100,102,1) 0%, rgba(37,37,38,1) 100%);
 }
