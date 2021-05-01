@@ -1,7 +1,7 @@
 # minesweeper
  Simple MineSweeper game using vanilla JavaScript
 
-![Game preview](./previews/gamePreview.png)
+![Game preview](./images/previews/gamePreview.png)
 
 <b>GAME RULES:</b>
 * Click on a block to open it.
@@ -30,7 +30,7 @@ and can be changed either manually or using the game's interface.
 * Number of mines
     * number of mines within the board determines the difficulty of solving the game
     
-![Game settings preview](./previews/gameSettings.png)
+![Game settings preview](./images/previews/gameSettings.png)
 _______________________________________________________________________________________________________________
 
 <b>GAME DESIGN:</b></br>
@@ -53,7 +53,7 @@ Technical information:
   * uses a fake JSON database to read game settings
   * no 3rd party frameworks
   
-![Game design diagram](./previews/gameDesign.png)
+![Game design diagram](./images/previews/gameDesign.png)
 _______________________________________________________________________________________________________________
 
 <b>NOTES:</b>
