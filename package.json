@@ -4,8 +4,8 @@
   "description": "Simple MineSweeper game using vanilla JavaScript",
   "main": "main.js",
   "dependencies": {
+    "@fortawesome/fontawesome-free": "^5.15.3",
     "animate.css": "^4.1.1",
-    "bootstrap": "^4.6.0",
     "css-loader": "^5.2.0",
     "fireworks-js": "^1.0.4",
     "jquery": "^3.6.0",

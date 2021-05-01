@@ -2,14 +2,14 @@
     background: var(--blockColor);
     display: grid;
     place-items: center;
-    margin: 1px 1px 1px 1px;
-    border: 1px solid var(--blockBorderColor);
+    margin: 2px;
     border-radius: 5px;
     width: 50px;
     height: 50px;
     font-family: var(--labelBlock);
     font-size: bold;
     font-size: larger;
+    box-shadow: 1px 1px grey;
 }
 
 .block:hover {
@@ -19,6 +19,7 @@
 
 .block:active {
     background: var(--blockColorActive);
+    transform: scale(0.95, 0.95);
 }
 
 .openedGreen {
@@ -27,10 +28,10 @@
 }
 
 @keyframes blinkingAnimation {
-    0%   { background: var(--blockOpenedRed); }
-    50%  { background: var(--blockOpenedMine); }
-    100% { background: var(--blockOpenedRed); }
-  }
+    0%   { background: var(--blockOpenedRed); transform: scale(1, 1); }
+    50%  { background: var(--blockOpenedMine); transform: scale(0.95, 0.95); }
+    100% { background: var(--blockOpenedRed); transform: scale(1, 1); }
+}
 
 .openedRed {
     background: var(--blockOpenedRed);

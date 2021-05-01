@@ -16,7 +16,7 @@ export const GameController = (() => {
             gameState: () => { return model.state },
             displayStartMenu: function displayStartMenu()
             {
-                view.drawStartMenu();
+                view.drawFrontPage();
             },
             initializeGame: function initializeGame()
             {

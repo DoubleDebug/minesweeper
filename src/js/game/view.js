@@ -1,4 +1,3 @@
-import 'bootstrap/dist/css/bootstrap.css';
 import 'animate.css';
 import { Fireworks } from 'fireworks-js';
 import { GameController } from "./controller.js";
@@ -22,13 +21,14 @@ export class GameView {
         {
             this.fireworks.start();
             label.innerHTML = 'You win!';
-            label.className = 'animate__animated animate__shakeY label youWin';
+            label.className = 'animate__animated animate__shakeY label';
         }
         else if (result === 'failure')
         {
             label.innerHTML = 'You lose!';
-            label.className = 'animate__animated animate__shakeX label youWin';
+            label.className = 'animate__animated animate__shakeX label';
         }
+        label.id = 'youWin';
         this.container.querySelector('.gameGrid').appendChild(label);
     }
 
@@ -58,18 +58,30 @@ export class GameView {
         });
     }
 
+    drawFrontPage()
+    {
+        this.drawStartMenu();
+        this.drawFooter();
+    }
+
     drawStartMenu()
     {
         const startMenu = document.createElement('div');
-        startMenu.className = 'startMenuContainer animate__animated animate__fadeInDown';
+        startMenu.className = 'animate__animated animate__fadeInDown';
+        startMenu.id = 'startMenuContainer';
+
+        const iconBomb = document.createElement('img');
+        iconBomb.src = '../../images/icons/bomb.svg';
+        iconBomb.id = 'iconBomb';
+        startMenu.appendChild(iconBomb);
 
         const gameTitle = document.createElement('h1');
         gameTitle.innerHTML = 'minesweeper';
-        gameTitle.className = 'label gameTitle'
+        gameTitle.className = 'label gameTitle';
         startMenu.appendChild(gameTitle);
 
         const btnStartGame = document.createElement('button');
-        btnStartGame.className = 'btn btn-light btnPlay';
+        btnStartGame.id = 'btnPlay';
         btnStartGame.innerHTML = 'Play';
         btnStartGame.onclick = () => { GameController.getInstance().then((gc) => {
             
@@ -81,7 +93,129 @@ export class GameView {
 
         })}
         startMenu.appendChild(btnStartGame);
-
+        
+        const btnRules = document.createElement('button');
+        btnRules.id = 'btnRules';
+        btnRules.innerHTML = 'Rules';
+        btnRules.onclick = () => {
+            if (!document.querySelector('.collapseRules'))
+                this.drawRules();
+            else
+                document.querySelector('.collapseRules').classList.toggle('show');
+         };
+        startMenu.appendChild(btnRules);
         this.container.appendChild(startMenu);
+    }
+
+    drawRules()
+    {
+        const rules = [
+            ['Click on a block to open it.',
+                'The first block you click will NEVER be a mine.'],
+            ['The block can either:',
+                'Be empty,',
+                'Not have a mine, but have blocks around it with mines,',
+                'Have a mine.'],
+            ['Clicking on an empty block opens it and opens all surrounding blocks.',
+                'Surrounding blocks are blocks that touch a block, including diagonals.'],
+            ['Clicking on a block that doesn\'t have a mine opens it and displays a number of mines in blocks around it.'],
+            ['Clicking a block with a mine means GAME OVER.'],
+            ['Right-click a block to mark it if you believe that it has a mine.'],
+            ['When you open all empty blocks, YOU WIN.']
+        ];
+
+        const card = document.createElement('div');
+        card.className = 'collapseRules show';
+
+        let list = document.createElement('ul');
+        for (let i=0; i<rules.length; i++)
+        {
+            const listItem = document.createElement('li');
+            listItem.innerHTML = rules[i][0];
+
+            if (rules[i].length > 1)
+            {
+                const subList = document.createElement('ul');
+                for (let j=1; j<rules[i].length; j++)
+                {
+                    const subListItem = document.createElement('li');
+                    subListItem.innerHTML = rules[i][j];
+                    subList.appendChild(subListItem);
+                }
+                listItem.appendChild(subList);
+            }
+            
+            list.appendChild(listItem);
+        }
+
+        card.appendChild(list);
+        this.container.appendChild(card);
+    }
+
+    drawFooter()
+    {
+        const footer = document.createElement('div');
+        footer.className = 'footer';
+
+        const footerItems = [
+        {
+            className: 'fab fa-github fa-2x',
+            id: 'iconGithub',
+            tooltipName: 'GitHub',
+            link: 'https://github.com/DoubleDebug/minesweeper'
+        },
+        {
+            className: 'fab fa-youtube fa-2x',
+            id: 'iconYoutube',
+            tooltipName: 'YouTube',
+            link: 'https://www.youtube.com/c/DoubleDYouTube'
+        },
+        {
+            className: 'fab fa-itch-io fa-2x',
+            id: 'iconItchio',
+            tooltipName: 'Itch.io',
+            link: 'https://notdoubled.itch.io'
+        }];
+        
+        footerItems.forEach((itemProps) => {
+            const item = this.createFooterItem(itemProps);
+            footer.appendChild(item);
+        });
+
+        this.container.appendChild(footer);
+    }
+
+    createFooterItem(itemProps)
+    {
+        const icon = document.createElement('i');
+        icon.className = itemProps.className + ' footerItem';
+        icon.id = itemProps.id;
+        icon.onmouseenter = () => {
+            const tooltip = this.createTooltip(itemProps.tooltipName);
+            icon.appendChild(tooltip);
+        };
+        icon.onmouseleave = () => {
+            icon.removeChild(icon.querySelector('.tooltip'));
+        };
+        icon.onclick = () => {
+            window.open(itemProps.link);
+        };
+        return icon;
+    }
+
+    createTooltip(text)
+    {
+        const tooltip = document.createElement('div');
+        tooltip.className = 'tooltip';
+
+        const tooltipArrow = document.createElement('div');
+        tooltipArrow.className = 'tooltipArrow';
+        tooltip.appendChild(tooltipArrow);
+
+        const label = document.createElement('label');
+        label.innerHTML = text;
+        tooltip.appendChild(label);
+
+        return tooltip;
     }
 }

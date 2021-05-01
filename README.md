@@ -12,10 +12,10 @@
     * Have a mine.
 * Clicking on an empty block opens it and opens all surrounding blocks.
     * Surrounding blocks are blocks that touch a block, including diagonals.
-* Clicking on a block that doesn't have a mine opens it and displays a number of mines in blocks around it
-* Clicking a block with a mine in it means GAME OVER.
+* Clicking on a block that doesn't have a mine opens it and displays a number of mines in blocks around it.
+* Clicking a block with a mine means GAME OVER.
 * Right-click a block to mark it if you believe that it has a mine.
-* When you open all blocks without mines, YOU WIN.
+* When you open all empty blocks, YOU WIN.
 _______________________________________________________________________________________________________________
 
 <b>GAME SETTINGS:</b></br>
