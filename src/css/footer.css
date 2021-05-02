@@ -11,18 +11,18 @@
     box-sizing: border-box;
 }
 
-.footerItem {
+.icon {
     cursor: pointer;
     color:white;
-    margin: 0 10px 0 10px;
+    margin: 10px;
     position: relative;
 }
 
-.footerItem:hover {
+.icon:hover {
     color: #d5e0e9;
 }
 
-.footerItem:active {
+.icon:active {
     color: #adcfe7;
 }
 

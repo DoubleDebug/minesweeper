@@ -1,0 +1,25 @@
+.menu {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+#labelTime {
+    color: white;
+    font-family: var(--blockFontFamily);
+    font-size: 25pt;
+    flex-grow: 1;
+}
+
+#iconSettings {
+    width: 30px;
+    height: 30px;
+    flex-grow: max-content;
+    margin-right: 0;
+}
+
+#iconSettings:hover {
+}
+
+#btnSave {
+    width: 100%;
+}

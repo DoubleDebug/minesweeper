@@ -48,9 +48,9 @@ export class GameView {
             trace: 3,
             explosion: 6,
             boundaries: {
-              top: 70,
+              top: 50,
               bottom: this.container.clientHeight,
-              left: 70,
+              left: 50,
               right: this.container.clientWidth
             },
             sound: {
@@ -188,7 +188,7 @@ export class GameView {
     createFooterItem(itemProps)
     {
         const icon = document.createElement('i');
-        icon.className = itemProps.className + ' footerItem';
+        icon.className = itemProps.className + ' icon';
         icon.id = itemProps.id;
         icon.onmouseenter = () => {
             const tooltip = this.createTooltip(itemProps.tooltipName);

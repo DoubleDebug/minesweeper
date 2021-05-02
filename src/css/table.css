@@ -1,5 +1,4 @@
 .gameGrid {
-    position: absolute;
     display: grid;
-    z-index: 1;
+    position: relative;
 }

@@ -1,10 +1,11 @@
+import { Menu } from "../menu/controller.js";
 import { Table } from "../table/controller.js";
 import { GameModel } from "./model.js";
 import { GameView } from "./view.js";
 
 // singleton game controller
 export const GameController = (() => {
-    let instance, table;
+    let instance, table, menu;
 
     async function createInstance(optionsURL)
     {
@@ -22,6 +23,11 @@ export const GameController = (() => {
             {
                 table = new Table(view.container, options.width, options.height);
                 table.draw();
+
+                menu = new Menu(view.container);
+                menu.draw();
+                menu.startStopwatch();
+
                 view.prepareFireworks();
             },
             startGame: function startGame(startingBlockPos)

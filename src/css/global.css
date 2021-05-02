@@ -10,32 +10,35 @@
     --blockOpenedMine: rgb(255, 100, 100);
     --blockBorderColor: rgb(41, 41, 41);
     --blockFontFamily: 'Arima Madurai';
-    --pageBackgroundColor: rgb(100,100,102);
     --labelColor: white;
     --labelFontFamily: 'Sriracha';
 }
 
+html :not(canvas) {
+    z-index: 2;
+}
+
 html, body {
-    height: 100%;
     margin: 0;
 }
 
 body {
     display: flex;
-    width: 100%;
     flex-direction: column;
 }
 
 .gameContainer {
-    height: 100%;
-    position: relative;
-    z-index: 0;
+    height: 100vh;
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
-    background: var(--pageBackgroundColor);
+    flex-direction: column;
     background: linear-gradient(-45deg, #c9d6df 0%, #52616b 50%, #1e2022 100%);
+}
+
+canvas {
+    position: absolute;
+    z-index: 1;
 }
 
 ul, li {
@@ -43,6 +46,7 @@ ul, li {
 }
 
 button {
+    margin: 8px 0 8px 0;
     color: black;
     cursor: pointer;
     height: 38px;
