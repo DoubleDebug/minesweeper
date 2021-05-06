@@ -1,0 +1,17 @@
+{
+    "easy": {
+        "width": 8,
+        "height": 8,
+        "numOfMines": 8
+    },
+    "medium": {
+        "width": 12,
+        "height": 10,
+        "numOfMines": 30
+    },
+    "hard": {
+        "width": 20,
+        "height": 12,
+        "numOfMines": 80
+    }
+}

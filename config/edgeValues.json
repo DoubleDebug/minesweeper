@@ -1,0 +1,13 @@
+{
+    "width": {
+        "max": 30,
+        "min": 4
+    },
+    "height": {
+        "max": 12,
+        "min": 4
+    },
+    "numOfMines": {
+        "min": 1
+    }
+}

@@ -1,6 +1,7 @@
 .menu {
     display: flex;
     flex-wrap: wrap;
+    margin-top: 5px;
 }
 
 #labelTime {
@@ -11,15 +12,69 @@
 }
 
 #iconSettings {
-    width: 30px;
-    height: 30px;
-    flex-grow: max-content;
-    margin-right: 0;
+    width: 25pt;
+    height: 25pt;
+    margin-top: 5px;
+    cursor: pointer;
 }
 
-#iconSettings:hover {
+.settingsContainer {
+    display: flex;
+    flex-direction: column;
+    opacity: 0%;
+    transition: ease 0.5s;
+    transform: translateY(-100px);
+    z-index: 1;
 }
 
-#btnSave {
+.settingsContainer.show {
+    opacity: 100%;
+    transition: ease 0.5s;
+    transform: translateY(0px);
+    z-index: 2;
+}
+
+.button-group {
+    display: grid;
+    grid-template-columns: 30% 30% 30% 10%;
     width: 100%;
+}
+
+.button-group > button {
+    z-index: inherit;
+    background: white;
+    box-shadow: none;
+}
+
+.button-group > .active {
+    background: linear-gradient(0deg, #c9d6df 0%, #becfdb 50%, #a8c7db 100%);
+}
+
+.configContainer {
+    display: flex;
+    flex-direction: column;
+}
+
+.configContainerRow {
+    display: grid;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+#configRow1 {
+    grid-template-columns: auto 20% 20px 20%;
+}
+
+#configRow2 {
+    grid-template-columns: auto calc(40% + 20px);
+}
+
+#labelSize, #labelTimes, #labelMines {
+    color: white;
+    font-family: var(--blockFontFamily);
+    font-size: 20px;
+}
+
+#labelTimes {
+    text-align: center;
 }

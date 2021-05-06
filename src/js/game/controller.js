@@ -25,7 +25,6 @@ export const GameController = (() => {
                 table.draw();
 
                 menu = new Menu(view.container);
-                menu.draw();
                 menu.startStopwatch();
 
                 view.prepareFireworks();
@@ -60,6 +59,7 @@ export const GameController = (() => {
                 model.gameOver();
                 view.gameOver(result);
                 table.openAll();
+                menu.stopStopwatch();
             }
         };
     }

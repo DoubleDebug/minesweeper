@@ -100,8 +100,11 @@ export class GameView {
         btnRules.onclick = () => {
             if (!document.querySelector('.collapseRules'))
                 this.drawRules();
-            else
+            
+            // janky solution mate (not working without delay)
+            setTimeout(() => {
                 document.querySelector('.collapseRules').classList.toggle('show');
+            }, 10);
          };
         startMenu.appendChild(btnRules);
         this.container.appendChild(startMenu);
@@ -125,7 +128,7 @@ export class GameView {
         ];
 
         const card = document.createElement('div');
-        card.className = 'collapseRules show';
+        card.className = 'collapseRules';
 
         let list = document.createElement('ul');
         for (let i=0; i<rules.length; i++)
