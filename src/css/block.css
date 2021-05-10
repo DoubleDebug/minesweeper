@@ -4,8 +4,6 @@
     place-items: center;
     margin: 2px;
     border-radius: 5px;
-    width: 50px;
-    height: 50px;
     font-family: var(--labelBlock);
     font-size: bold;
     font-size: larger;
@@ -27,12 +25,6 @@
     transition: ease 0.4s;
 }
 
-@keyframes blinkingAnimation {
-    0%   { background: var(--blockOpenedRed); transform: scale(1, 1); }
-    50%  { background: var(--blockOpenedMine); transform: scale(0.95, 0.95); }
-    100% { background: var(--blockOpenedRed); transform: scale(1, 1); }
-}
-
 .openedRed {
     background: var(--blockOpenedRed);
 }
@@ -40,4 +32,19 @@
 .openedMine {
     background: var(--blockOpenedMine);
     animation: blinkingAnimation 1s infinite;
+}
+
+.block.large {
+    width: 75px;
+    height: 75px;
+}
+
+.block.normal {
+    width: 50px;
+    height: 50px;
+}
+
+.block.small {
+    width: 35px;
+    height: 35px;
 }

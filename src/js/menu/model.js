@@ -9,3 +9,8 @@ export class MenuModel {
         this.timePassed++;
     }
 }
+
+export function calculateMaxMines(width, height)
+{
+    return Math.floor((width * height) / 2) - 1;
+}

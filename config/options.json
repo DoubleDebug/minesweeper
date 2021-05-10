@@ -1,5 +1,7 @@
 {
+    "name": "options",
+    "difficulty": "easy",
     "width": 8,
     "height": 8,
-    "numOfMines": 8
+    "numOfMines": 7
 }

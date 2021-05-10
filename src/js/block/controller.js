@@ -14,8 +14,8 @@ export class Block {
         this.view.open(openedByPlayer);
     }
 
-    draw() {
-        this.view.draw();
+    draw(blockSize) {
+        this.view.draw(blockSize);
     }
 
     placeMine() {

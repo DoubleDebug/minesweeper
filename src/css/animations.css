@@ -1,0 +1,44 @@
+.animationFadeInDown {
+    animation: fadeInDownAnimation 1s;
+}
+
+.animationGameOver {
+    animation: gameOverAnimation 0.5s 3 linear;
+}
+
+.animationYouWin {
+    transition: 1s ease;
+    animation: youWinAnimation 0.5s 3 linear;
+}
+
+@keyframes gameOverAnimation {
+    0%   { transform: translateX(0px); }
+    25%   { transform: translateX(-25px); }
+    50%   { transform: translateX(0px); }
+    75%   { transform: translateX(25px); }
+    100%   { transform: translateX(0px); }
+}
+
+@keyframes youWinAnimation {
+    0%   { transform: translateY(0px); }
+    25%   { transform: translateY(-25px); }
+    50%   { transform: translateY(0px); }
+    75%   { transform: translateY(25px); }
+    100%   { transform: translateY(0px); }
+}
+
+@keyframes fadeInDownAnimation {
+    0% {opacity: 0%; transform: translateY(-300px)}
+    100% {opacity: 100%; transform: translateY(0px)}
+}
+
+@keyframes blinkingAnimation {
+    0%   { background: var(--blockOpenedRed); transform: scale(1, 1); }
+    50%  { background: var(--blockOpenedMine); transform: scale(0.95, 0.95); }
+    100% { background: var(--blockOpenedRed); transform: scale(1, 1); }
+}
+
+@keyframes tooltipAnimation {
+    0%   { opacity: 0%; top: -70%; }
+    100% { opacity: 100%; top: -140%; }
+}

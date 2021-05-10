@@ -1,11 +1,12 @@
 {
+    "name": "difficulties",
     "easy": {
         "width": 8,
         "height": 8,
-        "numOfMines": 8
+        "numOfMines": 7
     },
     "medium": {
-        "width": 12,
+        "width": 10,
         "height": 10,
         "numOfMines": 30
     },

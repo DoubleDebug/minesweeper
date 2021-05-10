@@ -8,17 +8,20 @@ export class BlockView {
         this.model = model;
     }
 
-    draw()
+    draw(blockSize)
     {
         this.container = document.createElement('div');
+
+        // assigning block left and right click events
         Object.assign(this.container, {
-            className: 'block',
+            className: 'block ' + blockSize,
             onclick: () => {
                 GameController.getInstance().then((c) => c.openBlock(this.model.x, this.model.y, true));
             },
             oncontextmenu: (ev) => {
                 ev.preventDefault();
-                GameController.getInstance().then((c) => c.markBlock(this.model.x, this.model.y));
+                if (!this.model.opened)
+                    GameController.getInstance().then((c) => c.markBlock(this.model.x, this.model.y, this.model.marked));
         }});
         this.parent.appendChild(this.container);
     }

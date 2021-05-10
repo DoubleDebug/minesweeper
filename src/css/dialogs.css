@@ -6,7 +6,7 @@
 #youWin {
     position: absolute;
     font-size: 50px;
-    top: -130px;
+    top: -110px;
     width: 100%;
     text-align: center;
 }
@@ -33,10 +33,6 @@
     width: 150px;
 }
 
-#btnRules {
-    width: 75px;
-}
-
 .collapseRules {
     height: 0;
     opacity: 0%;
@@ -52,4 +48,19 @@
     height: 346px;
     opacity: 100%;
     transition: ease 0.5s;
+}
+
+#btnGroupRules {
+    justify-content: center;
+    width: 150px;
+    grid-template-columns: 60% 30%;
+}
+
+#iconOptions {
+    color: rgb(80, 80, 80);
+    padding-top: 7px;
+}
+
+#startMenuSettingsContainer {
+    width: 100%;
 }

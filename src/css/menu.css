@@ -8,7 +8,14 @@
     color: white;
     font-family: var(--blockFontFamily);
     font-size: 25pt;
+}
+
+#labelMinesLeft {
+    color: rgb(200, 200, 200);
+    font-family: var(--blockFontFamily);
+    font-size: 17pt;
     flex-grow: 1;
+    margin: 5pt 0 0 7pt;
 }
 
 #iconSettings {
@@ -23,30 +30,48 @@
     flex-direction: column;
     opacity: 0%;
     transition: ease 0.5s;
-    transform: translateY(-100px);
+    height: 0px;
     z-index: 1;
+    transform: translateY(-80px);
 }
 
 .settingsContainer.show {
     opacity: 100%;
     transition: ease 0.5s;
-    transform: translateY(0px);
+    height: 254px;
     z-index: 2;
+    transform: translateY(0px);
 }
 
 .button-group {
     display: grid;
-    grid-template-columns: 30% 30% 30% 10%;
     width: 100%;
+    margin-bottom: 5px;
+}
+
+.button-group :first-child {
+    margin-left: 0;
+}
+
+.button-group :last-child {
+    margin-right: 0;
 }
 
 .button-group > button {
     z-index: inherit;
-    background: white;
-    box-shadow: none;
+    margin-left: 4px;
+    margin-right: 4px;
 }
 
-.button-group > .active {
+#btnGroupDifficulty > button {
+    background: white;
+}
+
+#btnGroupDifficulty {
+    grid-template-columns: 30% 30% 30% 10%;
+}
+
+#btnGroupDifficulty > .active {
     background: linear-gradient(0deg, #c9d6df 0%, #becfdb 50%, #a8c7db 100%);
 }
 
@@ -69,7 +94,7 @@
     grid-template-columns: auto calc(40% + 20px);
 }
 
-#labelSize, #labelTimes, #labelMines {
+.labelSettings {
     color: white;
     font-family: var(--blockFontFamily);
     font-size: 20px;
@@ -77,4 +102,8 @@
 
 #labelTimes {
     text-align: center;
+}
+
+#btnGroupNewGame {    
+    grid-template-columns: 15% 85%;
 }

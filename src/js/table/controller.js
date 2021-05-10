@@ -22,9 +22,9 @@ export class Table {
         }
     }
 
-    draw()
+    draw(blockSizes)
     {
-        this.view.draw();
+        this.view.draw(blockSizes);
     }
 
     startGame(startingBlockPos, numOfMines)

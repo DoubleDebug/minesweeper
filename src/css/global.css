@@ -27,13 +27,17 @@ body {
     flex-direction: column;
 }
 
+hr {
+    width: 100%;
+}
+
 .gameContainer {
     height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    background: linear-gradient(-45deg, #c9d6df 0%, #52616b 50%, #1e2022 100%);
+    background: linear-gradient(135deg, #143054 0%, #2B4970 50%, #748BA7 100%);
 }
 
 canvas {
@@ -65,6 +69,15 @@ button:hover {
 button:active {
     box-shadow: none;
     transform: translate(2px, 2px);
+}
+
+.buttonGreen {
+    border: none;
+    background: var(--blockOpenedGreen);
+}
+
+.buttonGreen:hover {
+    background: linear-gradient(0deg, var(--blockOpenedGreen) 0%, rgb(182, 255, 182) 50%, rgb(153, 255, 153) 100%);
 }
 
 input[type=number] {

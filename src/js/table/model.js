@@ -10,6 +10,8 @@ export class TableModel {
 
     placeMines(startingBlockPos, numOfMines)
     {
+        this.numOfMines = numOfMines;
+
         // removing mines from board
         this.blocks.map(row => row.map(block => block.model.hasMine = false));    
         
@@ -95,5 +97,18 @@ export class TableModel {
             return true;
             
         return false;
+    }
+
+    getNumOfMinesLeft()
+    {
+        const numOfMinesLeft = this.numOfMines - this.getNumOfMarkedBlocks;
+        return (numOfMinesLeft > 0) ? numOfMinesLeft : 0;
+    }
+
+    getNumOfMarkedBlocks()
+    {
+        return this.blocks.reduce((acc, curr) => {
+            return acc += curr.filter(block => block.model.marked).length;
+        }, 0);
     }
 }

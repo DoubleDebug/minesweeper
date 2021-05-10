@@ -1,4 +1,3 @@
-import 'animate.css';
 import { Fireworks } from 'fireworks-js';
 import { GameController } from "./controller.js";
 
@@ -10,23 +9,18 @@ export class GameView {
         parent.appendChild(this.container);
     }
 
-    startGame() {
-        // TODO:
-        // add stopwatch & mines left
-    }
-
     gameOver(result) {
         const label = document.createElement('h1');
         if (result === 'success')
         {
             this.fireworks.start();
             label.innerHTML = 'You win!';
-            label.className = 'animate__animated animate__shakeY label';
+            label.className = 'animationYouWin label';
         }
         else if (result === 'failure')
         {
             label.innerHTML = 'You lose!';
-            label.className = 'animate__animated animate__shakeX label';
+            label.className = 'animationGameOver label';
         }
         label.id = 'youWin';
         this.container.querySelector('.gameGrid').appendChild(label);
@@ -58,6 +52,11 @@ export class GameView {
         });
     }
 
+    stopFireworks()
+    {
+        this.fireworks.stop();
+    }
+
     drawFrontPage()
     {
         this.drawStartMenu();
@@ -67,7 +66,7 @@ export class GameView {
     drawStartMenu()
     {
         const startMenu = document.createElement('div');
-        startMenu.className = 'animate__animated animate__fadeInDown';
+        startMenu.className = 'animationFadeInDown';
         startMenu.id = 'startMenuContainer';
 
         const iconBomb = document.createElement('img');
@@ -82,31 +81,66 @@ export class GameView {
 
         const btnStartGame = document.createElement('button');
         btnStartGame.id = 'btnPlay';
+        btnStartGame.className = 'buttonGreen';
         btnStartGame.innerHTML = 'Play';
         btnStartGame.onclick = () => { GameController.getInstance().then((gc) => {
             
             // remove start menu
             this.container.removeChild(startMenu);
+            const rulesContainer = document.querySelector('.collapseRules');
+            if (rulesContainer) rulesContainer.remove();
 
             // start game            
             gc.initializeGame();
 
         })}
         startMenu.appendChild(btnStartGame);
+
+        const btnGroup = document.createElement('div');
+        btnGroup.className = 'button-group';
+        btnGroup.id = 'btnGroupRules';
         
         const btnRules = document.createElement('button');
         btnRules.id = 'btnRules';
         btnRules.innerHTML = 'Rules';
         btnRules.onclick = () => {
+            // hide options container
+            if (settingsContainer != null && settingsContainer.className.includes('show'))
+                settingsContainer.classList.toggle('show');
+
+
             if (!document.querySelector('.collapseRules'))
                 this.drawRules();
             
-            // janky solution mate (not working without delay)
+            // janky solution mate (doesn't work without delay)
             setTimeout(() => {
                 document.querySelector('.collapseRules').classList.toggle('show');
             }, 10);
-         };
-        startMenu.appendChild(btnRules);
+        };
+        btnGroup.appendChild(btnRules);
+
+        const btnOptions = document.createElement('button');
+        btnOptions.id = 'btnOptions';
+        btnOptions.innerHTML = '<i class="fas fa-cog fa-lg" id="iconOptions"></i>';
+        btnOptions.onclick = () => {
+            // hide rules container
+            const rulesContainer = document.querySelector('.collapseRules');
+            if (rulesContainer != null && rulesContainer.className.includes('show'))
+                rulesContainer.classList.toggle('show');
+                
+            // toggle options container
+            settingsContainer.classList.toggle('show');
+        };
+        btnGroup.appendChild(btnOptions);
+        startMenu.appendChild(btnGroup);
+
+        // draw settings container
+        const settingsContainer = document.createElement('div');
+        settingsContainer.className = 'settingsContainer';
+        settingsContainer.id = 'startMenuSettingsContainer';
+        startMenu.appendChild(settingsContainer);
+        GameController.getInstance().then((gc) => gc.displaySettings(settingsContainer));
+
         this.container.appendChild(startMenu);
     }
 
