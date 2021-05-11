@@ -20,6 +20,9 @@ export class MenuView {
         this.settingsContainer.style.width = settingsWidth;
         this.container.appendChild(this.settingsContainer);
         drawSettings(config, this.settingsContainer);
+
+        // draw new game menu
+        drawNewGameMenu(this.settingsContainer);
     }
 
     draw(numOfMines)
@@ -84,9 +87,6 @@ export function drawSettings(config, myContainer)
 
     // draw game options (board width/height/mines)
     drawConfigurationUI(config.edgeValues, config.options, myContainer);
-
-    // draw new game menu
-    drawNewGameMenu(myContainer);
 }
 
 function drawDifficultyButtonGroup(difficulties, currentDifficulty, myContainer)
@@ -295,7 +295,7 @@ function drawNewGameMenu(myContainer)
     btnGroup.appendChild(btnHome);
 
     const btnNewGame = document.createElement('button');
-    btnNewGame.className = 'buttonGreen';
+    btnNewGame.className = 'buttonBlue';
     btnNewGame.innerHTML = 'New game';
     btnNewGame.onclick = () => {            
         // take selected options and pass them to game controller
@@ -305,7 +305,7 @@ function drawNewGameMenu(myContainer)
     myContainer.appendChild(btnGroup);
 }
 
-function getSelectedOptions()
+export function getSelectedOptions()
 {
     const currentOptions = {};
     currentOptions.difficulty = (document.getElementById('btnEasy').className === 'active' ? 'easy' :

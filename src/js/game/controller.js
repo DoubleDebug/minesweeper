@@ -76,9 +76,13 @@ export const GameController = (() => {
                 // update 'mines left' label
                 document.getElementById('labelMinesLeft').innerHTML = `| 0 mines left`;
             },
+            setOptions: function setOptions(currentOptions)
+            {
+                config.options = currentOptions;
+            },
             restartGame: function restartGame(currentOptions, callback) {
                 // apply selected options
-                config.options = currentOptions;
+                this.setOptions(currentOptions);
 
                 // remove view elements for current game
                 table.view.container.remove();

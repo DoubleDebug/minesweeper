@@ -1,5 +1,6 @@
 import { Fireworks } from 'fireworks-js';
 import { GameController } from "./controller.js";
+import { getSelectedOptions } from "../menu/view.js";
 
 export class GameView {
     constructor(parent) {
@@ -81,7 +82,7 @@ export class GameView {
 
         const btnStartGame = document.createElement('button');
         btnStartGame.id = 'btnPlay';
-        btnStartGame.className = 'buttonGreen';
+        btnStartGame.className = 'buttonBlue';
         btnStartGame.innerHTML = 'Play';
         btnStartGame.onclick = () => { GameController.getInstance().then((gc) => {
             
@@ -139,7 +140,25 @@ export class GameView {
         settingsContainer.className = 'settingsContainer';
         settingsContainer.id = 'startMenuSettingsContainer';
         startMenu.appendChild(settingsContainer);
-        GameController.getInstance().then((gc) => gc.displaySettings(settingsContainer));
+        GameController.getInstance().then((gc) => {
+            gc.displaySettings(settingsContainer);
+        
+            // draw save button
+            const btnContainer = document.createElement('div');
+            btnContainer.id = 'btnSaveContainer';
+            const btnSave = document.createElement('button');
+            btnSave.className = 'buttonBlue';
+            btnSave.innerHTML = 'Save';
+            btnSave.onclick = () => {
+                // apply selected options
+                GameController.getInstance().then((gc) => gc.setOptions(getSelectedOptions()));
+
+                // toggle options container
+                settingsContainer.classList.toggle('show');
+            };
+            btnContainer.appendChild(btnSave);
+            settingsContainer.appendChild(btnContainer);
+        });
 
         this.container.appendChild(startMenu);
     }

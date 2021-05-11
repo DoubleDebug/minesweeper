@@ -9,6 +9,7 @@
     width: 100%;
     padding: 10px;
     box-sizing: border-box;
+    z-index: 3;
 }
 
 .icon {

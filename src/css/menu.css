@@ -2,6 +2,7 @@
     display: flex;
     flex-wrap: wrap;
     margin-top: 5px;
+    min-width: 350px;
 }
 
 #labelTime {
@@ -28,9 +29,10 @@
 .settingsContainer {
     display: flex;
     flex-direction: column;
+    height: 0px;
     opacity: 0%;
     transition: ease 0.5s;
-    height: 0px;
+    min-width: 350px;
     z-index: 1;
     transform: translateY(-80px);
 }
@@ -72,7 +74,8 @@
 }
 
 #btnGroupDifficulty > .active {
-    background: linear-gradient(0deg, #c9d6df 0%, #becfdb 50%, #a8c7db 100%);
+    border: none;
+    background: #a6daff;
 }
 
 .configContainer {
@@ -106,4 +109,8 @@
 
 #btnGroupNewGame {    
     grid-template-columns: 15% 85%;
+}
+
+#btnSaveContainer {
+    display: grid;
 }

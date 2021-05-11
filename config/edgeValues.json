@@ -2,7 +2,7 @@
     "name": "edgeValues",
     "width": {
         "min": 5,
-        "max": 30
+        "max": 22
     },
     "height": {
         "min": 5,

@@ -63,7 +63,7 @@ button {
 }
 
 button:hover {
-    background: linear-gradient(0deg, #c9d6df 0%, #becfdb 50%, #a8c7db 100%);
+    background: linear-gradient(0deg, #c9d6df 0%, #becfdb 50%, #a8cbe2 100%);
 }
 
 button:active {
@@ -71,13 +71,13 @@ button:active {
     transform: translate(2px, 2px);
 }
 
-.buttonGreen {
+.buttonBlue {
     border: none;
-    background: var(--blockOpenedGreen);
+    background: #a6daff;
 }
 
-.buttonGreen:hover {
-    background: linear-gradient(0deg, var(--blockOpenedGreen) 0%, rgb(182, 255, 182) 50%, rgb(153, 255, 153) 100%);
+.buttonBlue:hover {
+    background: linear-gradient(180deg, #a6daff 0%, #b1deff 50%, #bee4ff 100%);
 }
 
 input[type=number] {
@@ -98,4 +98,8 @@ input::-webkit-inner-spin-button {
 
 input[type=number]:focus-visible {
     outline: none;
+}
+
+input[type=number]:disabled {
+    background-color: rgb(200, 200, 200);
 }

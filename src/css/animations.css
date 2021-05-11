@@ -8,7 +8,7 @@
 
 .animationYouWin {
     transition: 1s ease;
-    animation: youWinAnimation 0.5s 3 linear;
+    animation: youWinAnimation 0.5s 4 linear;
 }
 
 @keyframes gameOverAnimation {
@@ -21,9 +21,9 @@
 
 @keyframes youWinAnimation {
     0%   { transform: translateY(0px); }
-    25%   { transform: translateY(-25px); }
+    25%   { transform: translateY(-15px); }
     50%   { transform: translateY(0px); }
-    75%   { transform: translateY(25px); }
+    75%   { transform: translateY(15px); }
     100%   { transform: translateY(0px); }
 }
 
@@ -34,7 +34,7 @@
 
 @keyframes blinkingAnimation {
     0%   { background: var(--blockOpenedRed); transform: scale(1, 1); }
-    50%  { background: var(--blockOpenedMine); transform: scale(0.95, 0.95); }
+    50%  { background: var(--blockOpenedMine); transform: scale(0.91); }
     100% { background: var(--blockOpenedRed); transform: scale(1, 1); }
 }
 

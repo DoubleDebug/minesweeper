@@ -30,7 +30,13 @@
 }
 
 #btnPlay {
-    width: 150px;
+    transition: width 0.5s ease;
+    width: 200px;
+}
+
+#btnPlay:hover {
+    transition: 0.5s ease;
+    width: 350px;
 }
 
 .collapseRules {
