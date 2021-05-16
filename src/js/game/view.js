@@ -29,6 +29,9 @@ export class GameView {
 
     prepareFireworks()
     {
+        if (this.fireworks !== undefined)
+            return;
+
         this.fireworks = new Fireworks({
             target: this.container,
             hue: 120,
@@ -61,7 +64,9 @@ export class GameView {
     drawFrontPage()
     {
         this.drawStartMenu();
-        this.drawFooter();
+        
+        if (!document.getElementById('footer'))
+            this.drawFooter();
     }
 
     drawStartMenu()
@@ -212,6 +217,7 @@ export class GameView {
     {
         const footer = document.createElement('div');
         footer.className = 'footer';
+        footer.id = 'footer';
 
         const footerItems = [
         {

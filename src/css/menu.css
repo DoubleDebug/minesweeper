@@ -34,6 +34,7 @@
     transition: ease 0.5s;
     min-width: 350px;
     z-index: 1;
+    visibility: hidden;
     transform: translateY(-80px);
 }
 
@@ -42,6 +43,7 @@
     transition: ease 0.5s;
     height: 254px;
     z-index: 2;
+    visibility: visible;
     transform: translateY(0px);
 }
 
