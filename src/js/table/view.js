@@ -1,5 +1,3 @@
-import { GameController } from "../game/controller.js";
-
 export class TableView {
     constructor(parent, model)
     {

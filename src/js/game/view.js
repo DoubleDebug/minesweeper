@@ -71,7 +71,7 @@ export class GameView {
         startMenu.id = 'startMenuContainer';
 
         const iconBomb = document.createElement('img');
-        iconBomb.src = '../../images/icons/bomb.svg';
+        iconBomb.src = '../../../res/images/icons/bomb.svg';
         iconBomb.id = 'iconBomb';
         startMenu.appendChild(iconBomb);
 

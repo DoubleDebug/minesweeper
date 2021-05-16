@@ -39,7 +39,7 @@ export class MenuView {
         this.container.appendChild(labelMinesLeft);
 
         const iconSettingsObject = document.createElement('object');
-        iconSettingsObject.data = '../../images/icons/cog.svg';
+        iconSettingsObject.data = '../../../res/images/icons/cog.svg';
         iconSettingsObject.type = 'image/svg+xml';
         iconSettingsObject.id = 'iconSettings';
         iconSettingsObject.addEventListener('load', () => {

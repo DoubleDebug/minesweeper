@@ -7,8 +7,8 @@
     },
     "medium": {
         "width": 10,
-        "height": 10,
-        "numOfMines": 30
+        "height": 9,
+        "numOfMines": 25
     },
     "hard": {
         "width": 20,

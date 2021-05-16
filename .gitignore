@@ -1,3 +1,6 @@
 .git
 .vscode
 node_modules
+.github
+.firebase
+links.txt
