@@ -43,15 +43,15 @@ There are 3 sets of difficulties available - easy, medium and hard.
     * height: 8
     * number of mines: 7
 * MEDIUM
-    * width: 10
-    * height: 9
+    * width: 12
+    * height: 12
     * number of mines: 25
 * HARD
     * width: 20
     * height: 12
-    * number of mines: 80
+    * number of mines: 50
 * CUSTOM
-    * width: 5-22
+    * width: 5-30
     * height: 5-12
     * number of mines:
         * min: 2
@@ -102,4 +102,7 @@ ________________________________________________________________________________
   </br>So while testing different values for the board width, height and number of mines, I ran into a scenario where the number of mines would be 20 and a 5x5 board.
   </br>This seems OK at first, but when you open a block in the center, it sets that block and 8 surrounding ones to be non-mines.
   </br>This means that there are 25 - 9 = 16 blocks left. But you set the number of mines to 20.
-  </br>This would break the game and put it into an infinite loop of trying to place a mine.
+  </br>This would break the game and put it into an infinite loop of trying to place a mine.  
+  * Edge values for difficulty levels differ depending on the device used to play the game (mobile, tablets, laptops, desktops).
+  </br>For example, the maximum board width is lower on mobile devices compared to desktop PCs, simply because the screen is smaller.
+  </br>This is all for the purpose of aesthetics and was achieved by using a mix of responsive and adaptive design.
