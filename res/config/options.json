@@ -1,7 +1,33 @@
 {
     "name": "options",
-    "difficulty": "easy",
-    "width": 8,
-    "height": 8,
-    "numOfMines": 7
+    "values": [
+        {
+            "device": "desktop",
+            "difficulty": "easy",
+            "width": 8,
+            "height": 8,
+            "numOfMines": 7
+        },
+        {
+            "device": "laptop",
+            "difficulty": "easy",
+            "width": 8,
+            "height": 8,
+            "numOfMines": 7
+        },
+        {
+            "device": "tablet",
+            "difficulty": "easy",
+            "width": 7,
+            "height": 7,
+            "numOfMines": 6
+        },
+        {
+            "device": "mobile",
+            "difficulty": "easy",
+            "width": 6,
+            "height": 6,
+            "numOfMines": 5
+        }
+    ]
 }

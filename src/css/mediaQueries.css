@@ -1,0 +1,134 @@
+
+
+/* 
+##Device = Desktops
+*/
+
+@media (min-width: 1281px) {
+    .block.large {
+        width: 75px;
+        height: 75px;
+    }
+    
+    .block.normal {
+        width: 50px;
+        height: 50px;
+    }
+    
+    .block.small {
+        width: 35px;
+        height: 35px;
+    }
+}
+
+/* 
+##Device = Laptops
+*/
+
+@media (min-width: 1001px) and (max-width: 1280px) {
+    .block.large {
+        width: 60px;
+        height: 60px;
+    }
+    
+    .block.normal {
+        width: 45px;
+        height: 45px;
+    }
+    
+    .block.small {
+        width: 30px;
+        height: 30px;
+    }
+
+    #youWin {
+        top: -120px;
+    }
+}
+
+/* 
+##Device = Tablets, Ipads (portrait)
+*/
+
+@media (min-width: 768px) and (max-width: 1000px) {
+    .block.large {
+        width: 90px;
+        height: 90px;
+    }
+    
+    .block.normal {
+        width: 65px;
+        height: 65px;
+    }
+    
+    .block.small {
+        width: 40px;
+        height: 40px;
+    }
+
+    .collapseRules {
+        padding-bottom: 20px;
+        width: 80%;
+    }
+
+    #youWin {
+        top: -120px;
+    }
+}
+
+/* 
+##Device = Most of the Smartphones Mobiles (portrait)
+*/
+
+@media (max-width: 480px) {
+    .block.large {
+        width: 50px;
+        height: 50px;
+    }
+    
+    .block.normal {
+        width: 35px;
+        height: 35px;
+    }
+    
+    .block.small {
+        width: 25px;
+        height: 25px;
+    }
+
+    .block {
+        font-size: small;
+    }
+
+    .gameTitle {
+        font-size: 50px;
+    }
+
+    li {
+        font-size: 12px;
+    }
+    
+    .collapseRules {
+        padding: 0 10px 0 0;
+        width: 90%;
+        height: 10px;
+        overflow: auto;
+    }
+    
+    .collapseRules.show {
+        height: 200px;
+    }
+
+    .settingsContainer.show.short {
+        height: 54px;
+    }
+
+    #startMenuContainer {
+        width: 90%;
+    }
+
+    #youWin {
+        font-size: 35px;
+        top: -90px;
+    }
+}

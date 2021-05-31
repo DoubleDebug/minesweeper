@@ -1,31 +1,201 @@
 {
     "name": "edgeValues",
-    "width": {
-        "min": 5,
-        "max": 22
-    },
-    "height": {
-        "min": 5,
-        "max": 12
-    },
-    "numOfMines": {
-        "min": 2
-    },
-    "blockSizes": [
-        {
-            "className": "large",
+    "values": [
+    {
+        "device": "desktop",
+        "width": {
             "min": 5,
-            "max": 6
+            "max": 30
         },
-        {
-            "className": "normal",
-            "min": 7,
-            "max": 10
-        },
-        {
-            "className": "small",
-            "min": 11,
+        "height": {
+            "min": 5,
             "max": 12
-        }
+        },
+        "numOfMines": {
+            "min": 2
+        },
+        "blockSizes": [
+            {
+                "className": "large",
+                "width": {
+                    "min": 5,
+                    "max": 6
+                },
+                "height": {
+                    "min": 5,
+                    "max": 6
+                }
+            },
+            {
+                "className": "normal",
+                "width": {
+                    "min": 7,
+                    "max": 10
+                },
+                "height": {
+                    "min": 7,
+                    "max": 10
+                }
+            },
+            {
+                "className": "small",
+                "width": {
+                    "min": 11,
+                    "max": 30
+                },
+                "height": {
+                    "min": 11,
+                    "max": 12
+                }
+            }
+        ]
+    },
+    {
+        "device": "laptop",
+        "width": {
+            "min": 5,
+            "max": 26
+        },
+        "height": {
+            "min": 5,
+            "max": 12
+        },
+        "numOfMines": {
+            "min": 2
+        },
+        "blockSizes": [
+            {
+                "className": "large",
+                "width": {
+                    "min": 5,
+                    "max": 6
+                },
+                "height": {
+                    "min": 5,
+                    "max": 6
+                }
+            },
+            {
+                "className": "normal",
+                "width": {
+                    "min": 7,
+                    "max": 10
+                },
+                "height": {
+                    "min": 7,
+                    "max": 8
+                }
+            },
+            {
+                "className": "small",
+                "width": {
+                    "min": 11,
+                    "max": 26
+                },
+                "height": {
+                    "min": 9,
+                    "max": 12
+                }
+            }
+        ]
+    },
+    {
+        "device": "tablet",
+        "width": {
+            "min": 5,
+            "max": 14
+        },
+        "height": {
+            "min": 5,
+            "max": 12
+        },
+        "numOfMines": {
+            "min": 2
+        },
+        "blockSizes": [
+            {
+                "className": "large",
+                "width": {
+                    "min": 5,
+                    "max": 8
+                },
+                "height": {
+                    "min": 5,
+                    "max": 6
+                }
+            },
+            {
+                "className": "normal",
+                "width": {
+                    "min": 9,
+                    "max": 11
+                },
+                "height": {
+                    "min": 7,
+                    "max": 8
+                }
+            },
+            {
+                "className": "small",
+                "width": {
+                    "min": 12,
+                    "max": 14
+                },
+                "height": {
+                    "min": 9,
+                    "max": 12
+                }
+            }
+        ]
+    },
+    {
+        "device": "mobile",
+        "width": {
+            "min": 5,
+            "max": 12
+        },
+        "height": {
+            "min": 5,
+            "max": 13
+        },
+        "numOfMines": {
+            "min": 2
+        },
+        "blockSizes": [
+            {
+                "className": "large",
+                "width": {
+                    "min": 5,
+                    "max": 6
+                },
+                "height": {
+                    "min": 5,
+                    "max": 7
+                }
+            },
+            {
+                "className": "normal",
+                "width": {
+                    "min": 7,
+                    "max": 9
+                },
+                "height": {
+                    "min": 8,
+                    "max": 10
+                }
+            },
+            {
+                "className": "small",
+                "width": {
+                    "min": 10,
+                    "max": 12
+                },
+                "height": {
+                    "min": 11,
+                    "max": 13
+                }
+            }
+        ]
+    }
     ]
 }

@@ -6,9 +6,10 @@
 #youWin {
     position: absolute;
     font-size: 50px;
-    top: -110px;
+    top: -120px;
     width: 100%;
     text-align: center;
+    white-space: nowrap;
 }
 
 #startMenuContainer {

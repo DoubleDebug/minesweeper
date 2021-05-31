@@ -19,7 +19,14 @@ export class MenuView {
         this.settingsContainer.className = 'settingsContainer';
         this.settingsContainer.style.width = settingsWidth;
         this.container.appendChild(this.settingsContainer);
-        drawSettings(config, this.settingsContainer);
+
+        // draw settings (except for mobile)
+        if (window.innerWidth > 480) {
+            drawSettings(config, this.settingsContainer);
+        }
+        else {
+            this.settingsContainer.classList.add('short');
+        }
 
         // draw new game menu
         drawNewGameMenu(this.settingsContainer);
@@ -51,6 +58,7 @@ export class MenuView {
             svg.onmousedown = () => path.style.fill = '#adcfe7';
             svg.onmouseleave = () => path.style.fill = 'white';
             svg.onmouseup = () => {
+                // svg style
                 path.style.fill = '#d5e0e9';
                 svg.style.transition = 'ease 0.5s';
                 if (path.classList.contains('toggled'))
@@ -290,7 +298,8 @@ function drawNewGameMenu(myContainer)
     btnHome.id = 'btnHome';
     btnHome.onclick = () => {
         // update selected options and display start menu
-        GameController.getInstance().then((c) => c.restartGame(getSelectedOptions(), c.displayStartMenu));
+        const options = (window.innerWidth > 480) ? getSelectedOptions() : null;    // no options on mobile
+        GameController.getInstance().then((c) => c.restartGame(options, c.displayStartMenu));
     }
     btnGroup.appendChild(btnHome);
 
@@ -299,7 +308,8 @@ function drawNewGameMenu(myContainer)
     btnNewGame.innerHTML = 'New game';
     btnNewGame.onclick = () => {            
         // take selected options and pass them to game controller
-        GameController.getInstance().then((c) => c.restartGame(getSelectedOptions(), c.initializeGame));
+        const options = (window.innerWidth > 480) ? getSelectedOptions() : null;    // no options on mobile
+        GameController.getInstance().then((c) => c.restartGame(options, c.initializeGame));
     };
     btnGroup.appendChild(btnNewGame);
     myContainer.appendChild(btnGroup);

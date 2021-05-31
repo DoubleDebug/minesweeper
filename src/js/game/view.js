@@ -114,7 +114,6 @@ export class GameView {
             if (settingsContainer != null && settingsContainer.className.includes('show'))
                 settingsContainer.classList.toggle('show');
 
-
             if (!document.querySelector('.collapseRules'))
                 this.drawRules();
             

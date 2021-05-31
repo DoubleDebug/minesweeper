@@ -1,18 +1,77 @@
 {
     "name": "difficulties",
-    "easy": {
-        "width": 8,
-        "height": 8,
-        "numOfMines": 7
-    },
-    "medium": {
-        "width": 10,
-        "height": 9,
-        "numOfMines": 25
-    },
-    "hard": {
-        "width": 20,
-        "height": 12,
-        "numOfMines": 80
-    }
+    "values": [
+        {
+            "device": "desktop",
+            "easy": {
+                "width": 8,
+                "height": 8,
+                "numOfMines": 7
+            },
+            "medium": {
+                "width": 12,
+                "height": 12,
+                "numOfMines": 25
+            },
+            "hard": {
+                "width": 20,
+                "height": 12,
+                "numOfMines": 50
+            }
+        },
+        {
+            "device": "laptop",
+            "easy": {
+                "width": 8,
+                "height": 8,
+                "numOfMines": 7
+            },
+            "medium": {
+                "width": 12,
+                "height": 9,
+                "numOfMines": 25
+            },
+            "hard": {
+                "width": 20,
+                "height": 10,
+                "numOfMines": 50
+            }
+        },
+        {
+            "device": "tablet",
+            "easy": {
+                "width": 7,
+                "height": 7,
+                "numOfMines": 6
+            },
+            "medium": {
+                "width": 9,
+                "height": 7,
+                "numOfMines": 20
+            },
+            "hard": {
+                "width": 14,
+                "height": 11,
+                "numOfMines": 50
+            }
+        },
+        {
+            "device": "mobile",
+            "easy": {
+                "width": 6,
+                "height": 6,
+                "numOfMines": 5
+            },
+            "medium": {
+                "width": 8,
+                "height": 8,
+                "numOfMines": 15
+            },
+            "hard": {
+                "width": 10,
+                "height": 13,
+                "numOfMines": 35
+            }
+        }
+    ]
 }

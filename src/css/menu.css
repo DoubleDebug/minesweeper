@@ -2,7 +2,7 @@
     display: flex;
     flex-wrap: wrap;
     margin-top: 5px;
-    min-width: 350px;
+    min-width: 300px;
 }
 
 #labelTime {
@@ -32,7 +32,8 @@
     height: 0px;
     opacity: 0%;
     transition: ease 0.5s;
-    min-width: 350px;
+    width: 100%;
+    min-width: 300px;
     z-index: 1;
     visibility: hidden;
     transform: translateY(-80px);
@@ -115,4 +116,8 @@
 
 #btnSaveContainer {
     display: grid;
+}
+
+#btnCustom {
+    min-width: 30px;
 }

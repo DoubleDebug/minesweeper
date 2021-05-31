@@ -78,6 +78,9 @@ export const GameController = (() => {
             },
             setOptions: function setOptions(currentOptions)
             {
+                if (currentOptions === null)
+                    return;
+                    
                 config.options = currentOptions;
             },
             restartGame: function restartGame(currentOptions, callback) {
@@ -107,8 +110,21 @@ export const GameController = (() => {
             fetch(edgeValuesURL).then(response => response.json()),
             fetch(difficultiesURL).then(response => response.json())
         ]).then((configObjects) => {
-            configObjects.map(object => config[object.name] = object);
+            const deviceSizeIndex = getDeviceSize();
+            configObjects.map(object => config[object.name] = object.values[deviceSizeIndex]);
         });
+    }
+
+    function getDeviceSize()
+    {
+        if (window.innerWidth < 480)  // mobile
+            return 3;
+        else if (window.innerWidth >= 768 && window.innerWidth < 1024)  // tablet
+            return 2;
+        else if (window.innerWidth >= 1024 && window.innerWidth < 1300)   // laptop
+            return 1;
+        else if (window.innerWidth >= 1300)   // desktop
+            return 0;
     }
 
     return {
