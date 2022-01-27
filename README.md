@@ -1,5 +1,6 @@
 # minesweeper
- Simple MineSweeper game using vanilla JavaScript
+ Simple MineSweeper game using vanilla JavaScript.
+ Check out the [LIVE DEMO](https://minesweeper-52419.web.app).
 
 ![Game preview](./res/images/previews/gamePreview.png)
 
